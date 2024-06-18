@@ -19,7 +19,15 @@ typedef long long ll;
 #define all(v) v.begin() , v. end()
 #define MAX 5e4
 
-
+ll solve(ll val , vi& v){
+    ll sz = v.size()-1;
+    ll ans = 0;
+    veclp(v){
+        ans+=*it * pow(val ,  sz);
+        sz--;
+    }
+    return ans;
+}
 
 void YallaSolve() {
 
@@ -46,11 +54,26 @@ void uvaLotsOfTests() {
 void uvaLotsOfTests2() {
     string s;
     getline(cin, s);
+
     while (s != "") {
+        vi v;
         stringstream ss(s);
-        ll n;
-        ss >> n;
-        cout <<  ll(pow((n*(n+1))/2 , 2)) <<"\n";
+        int n;
+        while(!ss.eof()){
+            ss >> n;
+            v.push_back(n);
+        }
+        getline(cin, s);
+        stringstream st(s);
+        bool f = 0;
+        while(!st.eof()){
+            if(f)
+                cout<<" ";
+            f = 1;
+            st>>n;
+            cout<< solve(n , v) ;
+        }
+        cout << "\n";
         getline(cin, s);
     }
 }

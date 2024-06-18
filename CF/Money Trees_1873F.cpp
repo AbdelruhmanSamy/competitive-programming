@@ -20,9 +20,37 @@ typedef long long ll;
 #define MAX 5e4
 
 
-
 void YallaSolve() {
+    ll n , k;
+    cin>>n>>k;
+    vll a(n) , h(n);
+    for(auto &i:a)cin>>i;
+    for(auto &j:h)cin>>j;
 
+    ll st=0 , end  = 1;
+    ll ans=0 , sum = a[0];
+
+    while(st!=end || end!=n){
+        if(sum <= k)
+            ans = max(ans , end - st);
+
+        if(end == n || sum > k){
+            sum -= a[st];
+            st++;
+        }
+        else{
+            if(h[end-1]%h[end] == 0){
+                sum+=a[end];
+                end++;
+            }
+            else{
+                st = end;
+                sum = a[end];
+                end++;
+            }
+        }
+    }
+    cout<<ans;
 }
 
 void LotsOfTests() {
@@ -46,11 +74,9 @@ void uvaLotsOfTests() {
 void uvaLotsOfTests2() {
     string s;
     getline(cin, s);
-    while (s != "") {
+    while (true) {
         stringstream ss(s);
-        ll n;
-        ss >> n;
-        cout <<  ll(pow((n*(n+1))/2 , 2)) <<"\n";
+        YallaSolve();
         getline(cin, s);
     }
 }
@@ -60,7 +86,7 @@ int main() {
     cin.tie(NULL);
     std::cout.tie(NULL);
     //YallaSolve();
-    //LotsOfTests();
+    LotsOfTests();
     //uvaLotsOfTests();
-    uvaLotsOfTests2();
+    //uvaLotsOfTests2();
 }
