@@ -60,7 +60,7 @@ void YallaSolve() {
 
         int i = 4;
         vector<int> ans;
-        if(n< 8)
+        if(n < 8)
         {
             cout<<"Impossible.\n";
         }
