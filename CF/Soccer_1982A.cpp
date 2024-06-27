@@ -1,5 +1,5 @@
 //
-// Created by abdelruhman on 6/25/24.
+// Created by abdelruhman on 6/27/24.
 //
 #include<bits/stdc++.h>
 
@@ -20,28 +20,18 @@ typedef long long ll;
 #define pi 3.141592654
 #define mp make_pair
 #define all(v) v.begin() , v. end()
-#define MAX 1e18
+#define MAX 1e9
 #define rep(i ,v) for(int i =0 ; i<v.size() ; i++)
 
-
 void YallaSolve() {
-    ll n;
-    cin>>n;
-    ll c , b;
-    if(n<3){
-        cout << -1;
-        return;
-    }
-    n*=n;
-    if(n%2 == 0) {
-        c = (n/2 + 2) / 2;
-        b = c-2;
-    }
-    else {
-        c = (n - 1)/2 + 1;
-        b = c-1;
-    }
-    cout<<b<<" "<<c;
+    // a b
+    // c d
+    int a , b ,c , d;
+    cin>>a>>b>>c>>d;
+    if(a>=b && c<=d || (a<=b && c>=d) )
+        cout<<"NO";
+    else
+        cout<<"YES";
 }
 
 
@@ -53,11 +43,10 @@ void LotsOfTests() {
         cout << "\n";
     }
 }
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     std::cout.tie(NULL);
-//    YallaSolve();
+//        YallaSolve();
     LotsOfTests();
 }

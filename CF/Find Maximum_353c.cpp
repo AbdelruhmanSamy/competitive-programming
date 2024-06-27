@@ -1,5 +1,5 @@
 //
-// Created by abdelruhman on 6/25/24.
+// Created by abdelruhman on 6/27/24.
 //
 #include<bits/stdc++.h>
 
@@ -20,44 +20,42 @@ typedef long long ll;
 #define pi 3.141592654
 #define mp make_pair
 #define all(v) v.begin() , v. end()
-#define MAX 1e18
+#define MAX 1e9
 #define rep(i ,v) for(int i =0 ; i<v.size() ; i++)
-
 
 void YallaSolve() {
     ll n;
     cin>>n;
-    ll c , b;
-    if(n<3){
-        cout << -1;
-        return;
+
+    vll arr(n);
+    for(auto& i:arr)cin>>i;
+
+    string s;
+    cin>>s;
+
+    vll pre(n+1);
+
+    lp(i , 0 , n-1) {
+        pre[i + 1] = pre[i]+arr[i];
     }
-    n*=n;
-    if(n%2 == 0) {
-        c = (n/2 + 2) / 2;
-        b = c-2;
+
+    ll ans=0 , presum=0;
+    for(int i = n-1; i>=0 ; i--){
+        if(s[i]=='1'){
+            ans=max(ans , presum+pre[i]);
+            presum+=arr[i];
+        }
     }
-    else {
-        c = (n - 1)/2 + 1;
-        b = c-1;
-    }
-    cout<<b<<" "<<c;
+
+    cout<<max(ans , presum);
 }
 
 
-void LotsOfTests() {
-    int t;
-    cin >> t;
-    while (t--) {
-        YallaSolve();
-        cout << "\n";
-    }
-}
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     std::cout.tie(NULL);
-//    YallaSolve();
-    LotsOfTests();
+    YallaSolve();
 }
+
